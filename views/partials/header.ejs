@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title><%= typeof title !== 'undefined' ? title : 'MyWebsite' %></title>
+    <style type="text/tailwindcss">
+      @theme {
+        --color-brand: #22d3ee;
+        --color-brand-dark: #0891b2;
+      }
+      .nav-link {
+        @apply relative text-slate-400 hover:text-white transition-colors duration-200 font-medium text-sm tracking-wide;
+      }
+      .nav-link::after {
+        content: '';
+        @apply absolute -bottom-1 left-0 w-0 h-px bg-cyan-400 transition-all duration-300;
+      }
+      .nav-link:hover::after { @apply w-full; }
+      .nav-link.active { @apply text-cyan-400; }
+      .nav-link.active::after { @apply w-full; }
+      .btn-primary {
+        @apply inline-flex items-center gap-2 px-6 py-2.5 bg-cyan-400 text-slate-900 font-semibold text-sm rounded-lg hover:bg-cyan-300 active:scale-95 transition-all duration-200;
+      }
+      .btn-ghost {
+        @apply inline-flex items-center gap-2 px-6 py-2.5 border border-slate-600 text-slate-300 font-semibold text-sm rounded-lg hover:border-slate-400 hover:text-white active:scale-95 transition-all duration-200;
+      }
+      .card {
+        @apply bg-slate-800/40 border border-slate-700/60 rounded-2xl backdrop-blur-sm;
+      }
+      .card:hover {
+        @apply border-slate-600/80;
+      }
+      .section-label {
+        @apply inline-block text-xs font-semibold tracking-[0.2em] text-cyan-400 uppercase mb-4;
+      }
+    </style>
+  </head>
+  <body class="bg-[#080c14] text-slate-100 min-h-screen antialiased">
+
+    <!-- Subtle grid background -->
+    <div class="fixed inset-0 pointer-events-none" style="background-image: linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px); background-size: 48px 48px;"></div>
+
+    <!-- Navbar -->
+    <header class="fixed top-0 left-0 right-0 z-50 border-b border-slate-800/80" style="background: rgba(8,12,20,0.85); backdrop-filter: blur(16px);">
+      <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+        <!-- Logo -->
+        <a href="/" class="flex items-center gap-3 group">
+          <div class="w-8 h-8 rounded-lg bg-cyan-400 flex items-center justify-center text-slate-900 font-bold text-sm transition-transform group-hover:scale-105">M</div>
+          <span class="font-bold text-white tracking-tight">MyWebsite</span>
+        </a>
+
+        <!-- Nav links -->
+        <nav class="flex items-center gap-8">
+          <a href="/" class="nav-link">Home</a>
+          <a href="/about" class="nav-link">About</a>
+          <a href="/shop" class="nav-link">Shop</a>
+          <a href="/contact" class="nav-link">Contact</a>
+        </nav>
+
+        <!-- CTA -->
+        <a href="/contact" class="btn-primary text-xs">Get in Touch</a>
+      </div>
+    </header>
+
+    <!-- Content wrapper — navbar offset -->
+    <main class="pt-16">
